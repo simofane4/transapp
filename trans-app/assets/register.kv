@@ -22,6 +22,13 @@ Screen:
             height: self.texture_size[1]
             padding_y: 15
         MDTextFieldRound:
+            id: name_field
+            icon_left: "user"
+            hint_text: "user name"
+            width:200
+            font_size: 18
+            pos_hint: {"center_x":0.5 }
+        MDTextFieldRound:
             id: email_field
             icon_left: "email"
             hint_text: "Email"
@@ -37,13 +44,17 @@ Screen:
             pos_hint: {"center_x":0.5  }
             password:True
         MDRoundFlatButton:
-            text:"LOG IN"
-            font_size: 12
-            pos_hint: {"center_x":0.5 }
-        MDRoundFlatButton:
             text:"REGISTER"
             font_size: 12
             pos_hint: {"center_x":0.5 }
+            
+
+        MDRoundFlatButton:
+            text:"Log In"
+            font_size: 12
+            pos_hint: {"center_x":0.5 }
+            on_press: app.build()
+            
         Widget:
             size_hint_y: None   
             height:10
