@@ -1,0 +1,180 @@
+ScreenManager:
+    LoginScreen:
+    StockScreen:
+    UploadScreen:
+<LoginScreen>:
+    name: 'login'
+    MDFloatLayout:
+        MDLabel:
+            text:'Login'
+            pos_hint:{"center_y":.85}
+            font_style: "H3"
+            halign:"center"
+            theme_text_color: "Custom"
+            text_color:0,0,0,1
+        MDLabel:
+            text:'Welcom to app manager'
+            pos_hint:{"center_y":.75}
+            font_style: "H4"
+            halign:"center"
+            theme_text_color: "Custom"
+            text_color:0,0,0,1
+        
+        MDTextField:
+           
+            name:"email"
+            hint_text:"Enter Your Email"
+            halign:"center"
+            pos_hint:{'center_x':0.5,'center_y':0.6}
+            current_hint_text_color:0,0,0,1
+            size_hint_x:.8 
+
+        MDTextField:
+         
+            name:"password"
+            hint_text:"Enter Your Password"
+            halign:"center"
+            pos_hint:{'center_x':0.5,'center_y':0.5}
+            current_hint_text_color:0,0,0,1
+            size_hint_x:.8 
+            password:True
+
+        MDRectangleFlatButton:
+            text: 'Log In'
+            pos_hint: {'center_x':0.5,'center_y':0.4}
+            size_hint_x: .5 
+            on_press: root.manager.current = 'stock'
+            
+        MDRectangleFlatButton:
+            text: 'Upload'
+            pos_hint: {'center_x':0.5,'center_y':0.3}
+            on_press: root.manager.current = 'upload'
+
+
+    
+<StockScreen>:
+    name: 'stock'
+    BoxLayout:
+        orientation: 'vertical'
+
+        MDToolbar:
+            title: "Gestion Du Stock"
+            elevation: 10
+            left_action_items: [['menu', lambda x: nav_drawer.set_state("open")]]
+
+        Widget:
+    MDNavigationDrawer:
+        id: nav_drawer
+
+        ContentNavigationDrawer:
+            orientation: "vertical"
+            padding: "8dp"
+            spacing: "8dp"
+
+            AnchorLayout:
+                anchor_x: "center"
+                size_hint_y: None
+                height: avatar.height
+                
+
+                Image:
+                    id: avatar
+                    size_hint: None, None
+                    
+                    size: "90dp", "90dp"
+                    source: "assets/user.png"
+            
+
+            MDLabel:
+                text: "Gestion du stock"
+                halign:'center'
+                font_style: "Button"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            MDLabel:
+                text: "_____________________________"
+                halign:'center'
+                font_style: "Caption"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            ScrollView:
+
+                DrawerList:
+                    id: md_list
+
+
+    
+                    
+    
+    MDLabel:
+        text: 'stock'
+        halign: 'center'
+    MDRectangleFlatButton:
+        text: 'Back'
+        pos_hint: {'center_x':0.3,'center_y':0.1}
+        on_press: root.manager.current = 'login'
+        size_hint_x: .5 
+        
+<UploadScreen>:
+    name: 'upload'
+
+    MDNavigationDrawer:
+        id: nav_drawer
+
+        ContentNavigationDrawer:
+            orientation: "vertical"
+            padding: "8dp"
+            spacing: "8dp"
+
+            AnchorLayout:
+                anchor_x: "center"
+                size_hint_y: None
+                height: avatar.height
+                
+
+                Image:
+                    id: avatar
+                    size_hint: None, None
+                    
+                    size: "90dp", "90dp"
+                    source: "assets/user.png"
+            
+
+            MDLabel:
+                text: "Gestion du  upload "
+                halign:'center'
+                font_style: "Button"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            MDLabel:
+                text: "_____________________________"
+                halign:'center'
+                font_style: "Caption"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            ScrollView:
+
+                DrawerList:
+                    id: md_list
+
+
+        
+                    
+
+    
+        
+    MDLabel:
+        text: 'Upload'
+        halign: 'center'
+    MDRectangleFlatButton:
+        text: 'menu'
+        pos_hint: {'center_x':0.5,'center_y':0.3}
+        
+    MDRectangleFlatButton:
+        text: 'Back'
+        pos_hint: {'center_x':0.5,'center_y':0.1}
+        on_press: root.manager.current = 'login'
