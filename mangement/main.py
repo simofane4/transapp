@@ -9,6 +9,8 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivymd.uix.datatables import MDDataTable
 
 
+
+
 class LoginScreen(Screen):
     pass
     
@@ -16,7 +18,34 @@ class LoginScreen(Screen):
 
 
 class StockScreen(Screen):
-    pass
+
+        def data_table_set(self):
+            data_table = MDDataTable(pos_hint={'center_x': 0.5, 'center_y': 0.5},
+                                        size_hint=(0.9, 0.6),
+                                        check=True,
+                                        rows_num=10,
+                                        column_data=[
+                                            ("No.", dp(18)),
+                                            ("Food", dp(20)),
+                                            ("Calories", dp(20))
+                                        ],
+                                        row_data=[
+                                            ("1", "Burger", "300"),
+                                            ("2", "Oats", "200"),
+                                            ("3", "Oats", "200"),
+                                            ("4", "Oats", "200"),
+                                            ("5", "Oats", "200"),
+                                            ("6", "Oats", "200"),
+                                            ("7", "Oats", "200"),
+                                            ("8", "Oats", "200")
+
+                                        ]
+                                        )
+            data_table.bind(on_row_press=DemoApp.on_row_press)
+            data_table.bind(on_check_press=DemoApp.on_check_press)
+            
+
+    
    
 
 
@@ -75,7 +104,11 @@ class DemoApp(MDApp):
         
         
 
+    def on_row_press(self, instance_table, instance_row):
+        print(instance_table, instance_row)
 
+    def on_check_press(self, instance_table, current_row):
+        print(instance_table, current_row)
         
 
 
@@ -83,9 +116,7 @@ class DemoApp(MDApp):
 
 
 
-    def shek_user(self, email, password):
-        if email == "simo@simo.com" and password == "123456":
-            self.manager.current = 'profile'
+    
 
 
 DemoApp().run()
